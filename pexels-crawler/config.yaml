@@ -1,0 +1,8 @@
+#Http Header (for the most time, you don't need to change it)
+user_agent: 'Mozilla/5.0 AppleWebKit/537.36 Chrome/65.0.3325.181 Safari/537.36'
+#Where you want to download
+download_dir: '/home/sudhanshu/Desktop/sud-prog /pexels-crawler/pexels/'
+#The content you need
+element: 'Todo'
+#The number of pages you want to get
+search_range: 20

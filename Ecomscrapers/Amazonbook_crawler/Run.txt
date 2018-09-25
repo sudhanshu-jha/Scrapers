@@ -1,0 +1,1 @@
+scrapy crawl amazon_books -o data.csv
