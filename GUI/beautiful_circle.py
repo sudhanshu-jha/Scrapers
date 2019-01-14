@@ -7,7 +7,7 @@ def drawing():
     window.bgcolor("black")
 
     angle = 0
-    while (angle <= 360):
+    while angle <= 360:
         draw_square("blue", "circle", 3, angle)
         angle = angle + 10
 
@@ -26,9 +26,10 @@ def draw_square(color, shape, speed, angle):
 
     # Draw the Square
     start = 1
-    while (start <= 4):
+    while start <= 4:
         generic_turtle.forward(100)
         generic_turtle.right(90)
         start = start + 1
+
 
 drawing()

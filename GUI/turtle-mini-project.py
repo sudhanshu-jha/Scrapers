@@ -18,8 +18,8 @@ end = 3
 
 # Angles to be drawn
 specifics = {
-    'filled_unit': [start_filled, triangle_angles, triangle_angles, side],
-    'unfilled_unit': [start_unfilled, triangle_angles, triangle_angles, side]
+    "filled_unit": [start_filled, triangle_angles, triangle_angles, side],
+    "unfilled_unit": [start_unfilled, triangle_angles, triangle_angles, side],
 }
 
 
@@ -96,7 +96,7 @@ def unit(turtle, which):
         turtle.begin_fill()
 
     # Draw the triangle
-    while (start <= end):
+    while start <= end:
         turtle.left(specifics[which][start - 1])
         turtle.forward(specifics[which][3])
         start = start + 1
@@ -107,5 +107,6 @@ def unit(turtle, which):
     # Only End fill if it is a filled_unit
     if which == "filled_unit":
         turtle.end_fill()
+
 
 drawing()

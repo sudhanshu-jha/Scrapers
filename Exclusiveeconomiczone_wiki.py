@@ -9,28 +9,26 @@ def get_eez_areas(output_filename):
 
     # First, use urllib2 to read the html into a BeautifulSoup object
 
-    response = urllib2.urlopen(
-        'https://en.wikipedia.org/wiki/Exclusive_economic_zone')
+    response = urllib2.urlopen("https://en.wikipedia.org/wiki/Exclusive_economic_zone")
 
     html = response.read()
 
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, "html.parser")
 
     # Then, traverse the DOM to find the appropriate table, and read the rows
     # into an array
 
-    table = soup.find(id='Rankings_by_area').find_parent(
-    ).next_sibling.next_sibling.next_sibling.next_sibling
+    table = (
+        soup.find(id="Rankings_by_area")
+        .find_parent()
+        .next_sibling.next_sibling.next_sibling.next_sibling
+    )
 
-    
-
-
-
-    rows = table.find_all('tr')
+    rows = table.find_all("tr")
 
     # Set up our outfile to accept data as we iterate through the rows array
 
-    outfile = open(output_filename, 'w')
+    outfile = open(output_filename, "w")
 
     # Iterate through the rows, writing each country, value pair to a new line
 
@@ -48,7 +46,7 @@ def get_eez_areas(output_filename):
 
         else:
 
-            cells = row.find_all('td')
+            cells = row.find_all("td")
 
             country = cells[1].a.string
 
@@ -56,8 +54,12 @@ def get_eez_areas(output_filename):
 
             try:
 
-                outfile.write(country.replace(',', '') + ',' +
-                              str(int(eez_area.replace(',', ''))) + '\n')
+                outfile.write(
+                    country.replace(",", "")
+                    + ","
+                    + str(int(eez_area.replace(",", "")))
+                    + "\n"
+                )
 
             except:
 
@@ -74,9 +76,9 @@ def get_eez_areas(output_filename):
 
 def main():
 
-    get_eez_areas('outpfeez.csv')
+    get_eez_areas("outpfeez.csv")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     main()

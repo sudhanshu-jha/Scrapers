@@ -23,24 +23,25 @@ def draw_shape(format, color, shape, speed):
     generic_turtle.color(color)
     generic_turtle.speed(speed)
 
-    if (format == "square"):
+    if format == "square":
         start = 1
-        while (start <= 4):
+        while start <= 4:
             generic_turtle.forward(100)
             generic_turtle.right(90)
             start = start + 1
 
-    elif (format == "circle"):
+    elif format == "circle":
         generic_turtle.circle(60)
 
-    elif (format == "triangle"):
+    elif format == "triangle":
         start = 1
-        while (start <= 3):
+        while start <= 3:
             generic_turtle.forward(100)
             generic_turtle.right(120)
             start = start + 1
 
     else:
         print("Unrecognized Format")
+
 
 drawing()

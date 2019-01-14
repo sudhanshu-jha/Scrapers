@@ -16,7 +16,7 @@ for item in g_data1:
 for item in g_data2:
     girls.append(item.text)
 
-f = open("names.csv", 'w')
+f = open("names.csv", "w")
 
 for key in boys:
     f.write(key + "," + "boy")

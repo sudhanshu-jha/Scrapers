@@ -16,7 +16,7 @@ import unicodedata
 
 def remove_non_ascii_1(text):
 
-    return ''.join([i if ord(i) < 128 else ' ' for i in text])
+    return "".join([i if ord(i) < 128 else " " for i in text])
 
 
 with closing(Firefox()) as browser:
@@ -27,21 +27,22 @@ with closing(Firefox()) as browser:
     file = open("review.csv", "w")
 
     for count in range(1, 20):
-        nav_btns = browser.find_elements_by_class_name('_33m_Yg')
+        nav_btns = browser.find_elements_by_class_name("_33m_Yg")
 
         button = ""
 
         for btn in nav_btns:
             number = int(btn.text)
-            if(number == count):
+            if number == count:
                 button = btn
                 break
 
         button.send_keys(Keys.RETURN)
         WebDriverWait(browser, timeout=20).until(
-            EC.presence_of_all_elements_located((By.CLASS_NAME, "_2xg6Ul")))
+            EC.presence_of_all_elements_located((By.CLASS_NAME, "_2xg6Ul"))
+        )
 
-        read_more_btns = browser.find_elements_by_class_name('_1EPkIx')
+        read_more_btns = browser.find_elements_by_class_name("_1EPkIx")
 
         for rm in read_more_btns:
             browser.execute_script("return arguments[0].scrollIntoView();", rm)
@@ -55,14 +56,21 @@ with closing(Firefox()) as browser:
         ans = soup.find_all("div", class_="_3DCdKt")
 
         for tag in ans:
-            title = unicode(tag.find("p", class_="_2xg6Ul").string).replace(
-                u"\u2018", "'").replace(u"\u2019", "'")
+            title = (
+                unicode(tag.find("p", class_="_2xg6Ul").string)
+                .replace(u"\u2018", "'")
+                .replace(u"\u2019", "'")
+            )
             title = remove_non_ascii_1(title)
-            title.encode('ascii', 'ignore')
-            content = tag.find("div", class_="qwjRop").div.prettify(
-            ).replace(u"\u2018", "'").replace(u"\u2019", "'")
+            title.encode("ascii", "ignore")
+            content = (
+                tag.find("div", class_="qwjRop")
+                .div.prettify()
+                .replace(u"\u2018", "'")
+                .replace(u"\u2019", "'")
+            )
             content = remove_non_ascii_1(content)
-            content.encode('ascii', 'ignore')
+            content.encode("ascii", "ignore")
             content = content[15:-7]
 
             votes = tag.find_all("span", class_="_1_BQL8")
@@ -70,8 +78,13 @@ with closing(Firefox()) as browser:
             downvotes = int(votes[1].string)
 
             file.write("Review Title : %s\n\n" % title)
-            file.write("Upvotes : " + str(upvotes) +
-                       "\n\nDownvotes : " + str(downvotes) + "\n\n")
+            file.write(
+                "Upvotes : "
+                + str(upvotes)
+                + "\n\nDownvotes : "
+                + str(downvotes)
+                + "\n\n"
+            )
             file.write("Review Content :\n%s\n\n\n\n" % content)
 
     file.close()

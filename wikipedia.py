@@ -15,8 +15,7 @@ def find_first_link(url):
 
     # This div contains the article's body
     # (June 2017 Note: Body nested in two div tags)
-    content_div = soup.find(
-        id="mw-content-text").find(class_="mw-parser-output")
+    content_div = soup.find(id="mw-content-text").find(class_="mw-parser-output")
 
     # stores the first link found in the article, if the article contains no
     # links this value will remain None
@@ -30,14 +29,14 @@ def find_first_link(url):
         # first link to an article. Those other link types aren't direct
         # children though, they're in divs of various classes.
         if element.find("a", recursive=False):
-            article_link = element.find("a", recursive=False).get('href')
+            article_link = element.find("a", recursive=False).get("href")
             break
 
     if not article_link:
         return
 
     # Build a full url from the relative article_link url
-    first_link = urllib.parse.urljoin('https://en.wikipedia.org/', article_link)
+    first_link = urllib.parse.urljoin("https://en.wikipedia.org/", article_link)
     return first_link
 
 
@@ -53,6 +52,7 @@ def continue_crawl(search_history, target_url, max_steps=25):
         return False
     else:
         return True
+
 
 article_chain = [start_url]
 

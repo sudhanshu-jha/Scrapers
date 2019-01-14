@@ -44,8 +44,9 @@ for item in allElem:
 
     try:
 
-        d["Price"] = item.find(
-            "a", {"class": "listing-price"}).text.replace("\n", "").strip()
+        d["Price"] = (
+            item.find("a", {"class": "listing-price"}).text.replace("\n", "").strip()
+        )
 
     except:
 
@@ -53,8 +54,7 @@ for item in allElem:
 
     try:
 
-        d["Address"] = item.find(
-            "div", {"class": "property-address"}).text.strip()
+        d["Address"] = item.find("div", {"class": "property-address"}).text.strip()
 
     except:
 
@@ -62,8 +62,7 @@ for item in allElem:
 
     try:
 
-        d["Locality"] = item.find(
-            "div", {"class": "property-city"}).text.strip()
+        d["Locality"] = item.find("div", {"class": "property-city"}).text.strip()
 
     except:
 
@@ -71,8 +70,7 @@ for item in allElem:
 
     try:
 
-        d["Sq. Feet"] = item.find(
-            "div", {"class": "property-sqft"}).find("strong").text
+        d["Sq. Feet"] = item.find("div", {"class": "property-sqft"}).find("strong").text
 
     except:
 
@@ -80,8 +78,7 @@ for item in allElem:
 
     try:
 
-        d["Beds"] = item.find(
-            "div", {"class": "property-beds"}).find("strong").text
+        d["Beds"] = item.find("div", {"class": "property-beds"}).find("strong").text
 
     except:
 
@@ -89,8 +86,9 @@ for item in allElem:
 
     try:
 
-        d["Full Baths"] = item.find(
-            "div", {"class": "property-baths"}).find("strong").text
+        d["Full Baths"] = (
+            item.find("div", {"class": "property-baths"}).find("strong").text
+        )
 
     except:
 
@@ -98,8 +96,9 @@ for item in allElem:
 
     try:
 
-        d["Half Baths"] = item.find(
-            "div", {"class": "property-half-baths"}).find("strong").text
+        d["Half Baths"] = (
+            item.find("div", {"class": "property-half-baths"}).find("strong").text
+        )
 
     except:
 
@@ -107,9 +106,9 @@ for item in allElem:
 
     try:
 
-        link = item.find("a", {"class": "listing-price"}).get('href')
+        link = item.find("a", {"class": "listing-price"}).get("href")
 
-        d["URL"] = url + 'pdp=' + link[-12:]
+        d["URL"] = url + "pdp=" + link[-12:]
 
     except:
 
