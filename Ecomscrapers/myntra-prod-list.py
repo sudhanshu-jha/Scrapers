@@ -1,3 +1,4 @@
+#Python2
  # -*- coding: utf-8 -*-
 
 import os
@@ -105,17 +106,21 @@ while y != 0 :
         else :
             original_price = current_price
 
-##        percent_off = str(abc.findAll("span",{"class" : "price-discount"}))
-##        percent_off = percent_off.translate(None, '[]') #extracts brackets and places none
-##        #checks for string being non empty else is return if empty or secuence of white space
-##        if percent_off and not percent_off.isspace() :
-##            percent_off = str(int(''.join(ele for ele in percent_off if ele.isdigit() or ele == '.')))
-##        else :
-##            percent_off = "NO DISCOUNT"
-        print product_name
-        print brand
-        print current_price
-        print original_price
+        percent_off = str(abc.findAll("span",{"class" : "price-discount"}))
+        percent_off = percent_off.translate(None, '[]') #extracts brackets and places none
+        #checks for string being non empty else is return if empty or secuence of white space
+        if percent_off and not percent_off.isspace() :
+           percent_off = str(int(''.join(ele for ele in percent_off if ele.isdigit() or ele == '.')))
+        else :
+           percent_off = "NO DISCOUNT"
+
+
+        print "Product :", product_name
+        print "Brand :", brand
+        print "Current Prize: ", current_price
+        print "Original Price", original_price
+        print "Percent-off" , percent_off,"%"
+
         data1 = product_name + "," + brand + "," + current_price + "," + original_price + "\n"
         f.write(data1)
 ##        print percent_off
