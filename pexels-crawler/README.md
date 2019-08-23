@@ -12,7 +12,7 @@ Get pexels-crawler from GitHub. There are several variants to do it:
    [![git-image]][git-url]
 
    ```sh
-   $ git clone https://github.com/Zach-Leo/pexels-crawler
+   $ git clone https://github.com/sudhanshu-jha/pexels-crawler
    ```
 
    Clone command will give you the **whole repository**. 
